@@ -17,19 +17,19 @@ type Config struct {
 	Chat_ID   int64      `yaml:"chat_id"`
 }
 
-func readFile(fileName string) (reminder []Reminder, err error) {
+func readFile(fileName string) (configuration Config, err error) {
 
 	var config Config
 	rawFile, err := os.ReadFile(fileName)
 	if err != nil {
-		return []Reminder{}, err
+		return Config{}, err
 	}
 
 	err1 := yaml.Unmarshal(rawFile, &config)
 
 	if err1 != nil {
-		return []Reminder{}, err
+		return Config{}, err
 	}
 
-	return config.Reminders, nil
+	return config, nil
 }
