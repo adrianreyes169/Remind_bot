@@ -13,6 +13,8 @@ type Reminder struct {
 
 type Config struct {
 	Reminders []Reminder `yaml:"reminders"`
+	Token     string     `yaml:"token"`
+	Chat_ID   int64      `yaml:"chat_id"`
 }
 
 func readFile(fileName string) (reminder []Reminder, err error) {
